@@ -1,4 +1,5 @@
 import pool from '../config/db.js';
+
 class Recipe {
   static async checkRecipe(titre) {
     const connection = await pool.getConnection();
@@ -47,6 +48,7 @@ class Recipe {
     await connection.execute('delete from recettes where id = ?', [id]);
     return true;
   }
+
   static async editRecipe(id, titre, ingredients, type) {
     const connection = await pool.getConnection();
     await connection.execute(
